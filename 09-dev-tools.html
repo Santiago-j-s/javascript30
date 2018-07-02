@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Interpolated
+    console.log('First Dog: %s', dogs[0].name);
+    console.log(`First Dog: ${dogs[0].name}`);
+
+    // Styled
+    console.log('%c This is some styled text', 'font-size: 16px; color:blue;');
+
+    // warning!
+    console.warn('warning!');
+
+    // Error :|
+    console.error('error!');
+
+    // Info
+    console.info('Some interesting info');
+
+    // Testing
+    const p = document.querySelectorAll('p');
+    console.assert(p.length > 1, 'There is no more than one paragraph');
+
+    // clearing
+    // console.clear()
+
+    // Viewing DOM Elements
+    console.log(p[0]);
+
+    // Grouping together
+    console.groupCollapsed('group');
+    console.log('grouping');
+    console.log('things');
+    console.log('together');
+    console.groupEnd('group');
+
+    // counting
+    console.count(dogs);
+
+    // timing
+    console.time('begin')
+    fetch('https://api.github.com/users/santiago-j-s')
+      .then(data => data.json())
+      .then(data => {
+        console.log(data);
+        console.time('end')
+      });
+  </script>
+</body>
+</html>
